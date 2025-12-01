@@ -1,0 +1,21 @@
+[package]
+name = "xfrm"
+version = "0.1.0"
+edition = "2021"
+authors = ["mercyuuu"]
+description = "a pretty quick conversion tool supporting 250+ formats"
+license = "AGPL-3.0"
+
+[dependencies]
+clap = { version = "4.5", features = ["derive", "color"] }
+anyhow = "1.0"
+indicatif = "0.17"
+colored = "2.1"
+tokio = { version = "1.42", features = ["full"] }
+which = "6.0"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
