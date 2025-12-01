@@ -1,0 +1,50 @@
+name: Rust
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build release binary
+      run: cargo build --verbose --release
+    - name: Upload binary artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: xfrm-binary
+        path: target/release/xfrm
+
+  create-release:
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Download binary artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: xfrm-binary
+    - name: Get latest commit message
+      id: get_commit_message
+      run: echo "COMMIT_MESSAGE=$(git log -1 --pretty=%B)" >> "$GITHUB_ENV"
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: xfrm-binary/xfrm
+        tag_name: v${{ github.run_number }}
+        name: Release v${{ github.run_number }}
+        body: |
+          **Commit Message:**
+          ${{ env.COMMIT_MESSAGE }}
+
+          For more details, see the commits: ${{ github.compare }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
