@@ -44,11 +44,6 @@ cd xfrm
 cargo install --path .
 ```
 
-#### With Cargo
-```bash
-cargo install xfrm
-```
-
 ## Usage
 
 Basic syntax:
