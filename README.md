@@ -157,14 +157,14 @@ pdf, docx, txt, md, html, epub, odt, rtf, latex, and more
 
 ## Performance
 
-`xfrm` is built in Rust with kind of aggressive optimizations:
-- **Stripped binaries** - minimal binary size
-- **Attempte Zero-copy where possible** - efficient memory usage
-- **Parallel processing** - whic utilizes all CPU cores via 
+`xfrm` is built in Rust with pretty aggressive optimizations:
+- **Stripped binaries** - Minimal binary size
+- **Attempte Zero-copy where possible** - Efficient memory usage
+- **Parallel processing** - Which utilizes all CPU cores via 
 
 ## Benchmarks
 
-when compared to manual ffmpeg/ImageMagick commands, `xfrm` adds a very slight overhead (<5ms) while providing a much simpler interface.
+When compared to manual ffmpeg/ImageMagick commands, `xfrm` adds a very slight overhead (<5ms) while providing a much simpler interface.
 
 ## Inspiration
 
