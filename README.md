@@ -28,9 +28,7 @@ sudo apt install ffmpeg imagemagick pandoc
 ```
 
 #### macOS
-```bash
-brew install ffmpeg imagemagick pandoc
-```
+# Just build from source, or use a compiled binary from the [releases](https://github.com/mercyuuu/xfrm/releases/), As i do not wish to go on and add to brew
 
 ### Installing xfrm
 
